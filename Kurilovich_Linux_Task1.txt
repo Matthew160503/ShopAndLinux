@@ -1,0 +1,84 @@
+1)   Используйте команды операционной системы Linux и создайте две новых директории – 
+«Игрушки для школьников» и «Игрушки для дошколят»
+
+matthew@matthew-VirtualBox:~/peremen$ mkdir toys_for_schoolchildren
+matthew@matthew-VirtualBox:~/peremen$ mkdir toys_for_preschoolers
+matthew@matthew-VirtualBox:~/peremen$ ls
+toys_for_preschoolers  toys_for_schoolchildren
+
+2)   Создайте в директории «Игрушки для школьников» текстовые файлы - 
+«Роботы», «Конструктор», «Настольные игры»
+
+matthew@matthew-VirtualBox:~/peremen$ cd toys_for_schoolchildren
+matthew@matthew-VirtualBox:~/peremen/toys_for_schoolchildren$ touch Robots.txt
+matthew@matthew-VirtualBox:~/peremen/toys_for_schoolchildren$ touch Constructions.txt
+matthew@matthew-VirtualBox:~/peremen/toys_for_schoolchildren$ touch Board_games.txt
+matthew@matthew-VirtualBox:~/peremen/toys_for_schoolchildren$ ls
+Board_games.txt  Constructions.txt  Robots.txt
+
+
+3)    Создайте в директории «Игрушки для дошколят» текстовые файлы 
+«Мягкие игрушки», «Куклы», «Машинки»
+
+matthew@matthew-VirtualBox:~/peremen/toys_for_schoolchildren$ cd ..
+matthew@matthew-VirtualBox:~/peremen$ cd toys_for_preschoolers
+matthew@matthew-VirtualBox:~/peremen/toys_for_preschoolers$ touch Soft_toys.txt
+matthew@matthew-VirtualBox:~/peremen/toys_for_preschoolers$ touch Dolls.txt
+matthew@matthew-VirtualBox:~/peremen/toys_for_preschoolers$ touch Cars.txt
+matthew@matthew-VirtualBox:~/peremen/toys_for_preschoolers$ ls
+Cars.txt  Dolls.txt  Soft_toys.txt
+
+4)   Объединить 2 директории в одну «Имя Игрушки»
+
+matthew@matthew-VirtualBox:~/peremen$ mkdir Toy_name
+matthew@matthew-VirtualBox:~/peremen$ ls
+Toy_name  toys_for_preschoolers  toys_for_schoolchildren
+matthew@matthew-VirtualBox:~/peremen$ mv toys_for_schoolchildren Toy_name
+matthew@matthew-VirtualBox:~/peremen$ mv toys_for_preschoolers Toy_name
+matthew@matthew-VirtualBox:~/peremen$ ls
+Toy_name
+matthew@matthew-VirtualBox:~/peremen$ cd /Toy_name
+-bash: cd: /Toy_name: Нет такого файла или каталога
+matthew@matthew-VirtualBox:~/peremen$ cd Toy_name/
+matthew@matthew-VirtualBox:~/peremen/Toy_name$ ls
+toys_for_preschoolers  toys_for_schoolchildren
+matthew@matthew-VirtualBox:~/peremen/Toy_name$
+
+5)   Переименовать директорию «Имя Игрушки» в «Игрушки»
+
+matthew@matthew-VirtualBox:~/peremen/Toy_name$ cd ..
+matthew@matthew-VirtualBox:~/peremen$ mv Toy_name Toys
+matthew@matthew-VirtualBox:~/peremen$ ls
+Toys
+
+6)   Просмотреть содержимое каталога «Игрушки».
+
+matthew@matthew-VirtualBox:~/peremen$ ls -la
+итого 12
+drwxrwxr-x  3 matthew matthew 4096 мая  2 21:03 .
+drwxr-x--- 17 matthew matthew 4096 мая  2 20:43 ..
+drwxrwxr-x  4 matthew matthew 4096 мая  2 21:00 Toys
+
+7)   Установить и удалить snap-пакет. (Любой, какой хотите)
+
+matthew@matthew-VirtualBox:~/peremen$ sudo snap install chromium
+chromium 112.0.5615.49 от Canonical✓ установлен
+matthew@matthew-VirtualBox:~/peremen$ sudo snap remove chromium
+chromium удалён
+
+8)   Добавить произвольную задачу для выполнения каждые 3 минуты (Например, запись в текстовый файл чего-то или копирование из каталога А в каталог Б).
+
+Toys/toys_for_schoolchildren$ crontab -e
+crontab: installing new crontab
+crontab: installing new crontab
+matthew@matthew-VirtualBox:~/peremen/Toys/toys_for_schoolchildren$ crontab -l
+# Edit this file to introduce tasks to be run by cron.#
+# Each task to run has to be defined through a singlline
+# indicating with different fields when the task wil be run
+# and what command to run for the task
+#
+# To define the time you can provide concrete values for
+# minute (m), hour (h), day of month (dom), month (mon),
+# and day of week (dow) or use '*' in these fields (for 'any').
+
+*/3 * * * * echo "Hello every 3 minutes!!!!"
